@@ -1,4 +1,4 @@
-Use <navn på schema>;
+CREATE DATABASE Roprosjekt; 
 
 CREATE TABLE Tid (
 År int,
