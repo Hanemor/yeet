@@ -44,7 +44,7 @@ uID int,
 år int,
 uke int,
 klasseID int,
-watt_60 Time,
+watt_60 int,
 bevegelighet int,
 watt_5000_M int,
 tid_5000_m Time,
@@ -108,3 +108,15 @@ VALUES
 (6, 'JBJ'),
 (7, 'JCG'),
 (8, 'JCJ');
+
+INSERT INTO tid
+VALUES
+(2020, 44),
+(2020, 11),
+(2020, 2),
+(2019, 44),
+(2019, 11),
+(2019, 2),
+(2018, 44),
+(2018, 11),
+(2018, 2);
