@@ -9,13 +9,41 @@ constraint tid_pk primary key (år, uke)
 );
 
 CREATE INDEX uke
-ON Tid (uke);
+ON tid (uke);
+
+CREATE TABLE klubb(
+klubbID int(3),
+klubbNavn varchar(30),
+constraint klubb_pk primary key (klubbID));
+
+CREATE TABLE kjonn(
+kjonnID int(3),
+kjonntype varchar(30),
+constraint kjonn_pk primary key (kjonnID));
+
+CREATE TABLE roKlasse(
+klasseID int(3),
+klasseType varchar(30),
+constraint roKlasse_pk primary key (klasseID));
+
+CREATE TABLE utover(
+uID int(3),
+kjonnID int(3),
+klubbID int(3),
+klasseID int(3),
+fornavn varchar(30),
+etternavn varchar(30),
+fodt int(4),
+constraint utover_pk primary key(uID),
+constraint roklasse_fk foreign key(klasseID) references roKlasse (klasseID),
+constraint klubb_fk foreign key(klubbID) references klubb (KlubbID),
+constraint kjonn_fk foreign key(kjonnID) references kjonn (kjonnID));
 
 CREATE TABLE testresultater (
-Utøver_ID int,
+uID int,
 år int,
 uke int,
-roklassetype VARCHAR(10),
+klasseID int,
 watt_60 Time,
 bevegelighet int,
 watt_5000_M int,
@@ -32,37 +60,11 @@ min_3000_M Time,
 antall_Kr_Hev int,
 3000_løp Time,
 constraint testresultater_pk primary key (Utøver_ID, år, uke),
-constraint år_fk foreign key(år) references Tid (år),
-constraint uke_fk foreign key(uke) references Tid (uke)
+constraint år_fk foreign key(år) references tid (år),
+constraint uke_fk foreign key(uke) references tid (uke),
+constraint utover_fk foreign key(uID) references utover (uID),
+constraint klasse_fk foreign key(klasseID) references roKlasse (klasseID) 
 );
-
-CREATE TABLE roKlasse(
-klasseID int(3),
-klasseType varchar(30),
-constraint roKlasse_pk primary key (klasseID));
-
-CREATE TABLE klubb(
-klubbID int(3),
-klubbNavn varchar(30),
-constraint klubb_pk primary key (klubbID));
-
-CREATE TABLE kjonn(
-kjonnID int(3),
-kjonntype varchar(30),
-constraint kjonn_pk primary key (kjonnID));
-
-CREATE TABLE utover(
-uID int(3),
-kjonnID int(3),
-klubbID int(3),
-klasseID int(3),
-fornavn varchar(30),
-etternavn varchar(30),
-fodt int(4),
-constraint utover_pk primary key(uID),
-constraint roklasse_fk foreign key(klasseID) references roKlasse (klasseID),
-constraint klubb_fk foreign key(klubbID) references klubb (KlubbID),
-constraint kjonn_fk foreign key(kjonnID) references kjonn (kjonnID));
 
 INSERT INTO kjonn
 VALUES 
@@ -96,7 +98,7 @@ VALUES
 (23, 'Trondhjems'),
 (24, 'Tønsberg');
 
-INSERT INTO roklasse
+INSERT INTO roKlasse
 VALUES
 (1, 'SM'),
 (2, 'SK'),
