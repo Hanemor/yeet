@@ -1,17 +1,17 @@
-package com.skoleprÃ¸ver.servlets;
+package com.skoleprøver.servlets;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SkolePrÃ¸veDao {
+public class SkolePrøveDao {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/elevkarakterer";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "Ex20200702-IS201";
 	private String jdbcDriver = "com.mysql.jdbc.Driver";
 	
-	private static final String INSERT_PRÃ˜VE_SQL = "INSERT INTO skoleprÃ¸ve" + "(Fornavn, Etternavn, Mattte, Norsk, Historie, Tysk) VALUES"
+	private static final String INSERT_PRØVE_SQL = "INSERT INTO skoleprøve" + "(Fornavn, Etternavn, Mattte, Norsk, Historie, Tysk) VALUES"
 	+"(?, ?, ?, ?, ?, ?)";
 	
 	protected Connection getConnection() {
@@ -28,20 +28,20 @@ public class SkolePrÃ¸veDao {
 		return connection;
 	}
 	
-public SkolePrÃ¸veDao() {
+public SkolePrøveDao() {
 		
 	}
 
-public void nyPrÃ¸ve(skoleprÃ¸ve skoleprÃ¸ve ) throws SQLException {
-	System.out.println(INSERT_PRÃ˜VE_SQL);
+public void nyPrøve(skoleprøve skoleprøve ) throws SQLException {
+	System.out.println(INSERT_PRØVE_SQL);
 	try(Connection connection = getConnection();
-			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRÃ˜VE_SQL)){
-		preparedStatement.setString(1, skoleprÃ¸ve.getFornavn());
-		preparedStatement.setString(1, skoleprÃ¸ve.getEtternavn());
-		preparedStatement.setString(1, skoleprÃ¸ve.getMatte());
-		preparedStatement.setString(1, skoleprÃ¸ve.getNorsk());
-		preparedStatement.setString(1, skoleprÃ¸ve.getHistorie());
-		preparedStatement.setString(1, skoleprÃ¸ve.getTysk());
+			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRØVE_SQL)){
+		preparedStatement.setString(1, skoleprøve.getFornavn());
+		preparedStatement.setString(1, skoleprøve.getEtternavn());
+		preparedStatement.setString(1, skoleprøve.getMatte());
+		preparedStatement.setString(1, skoleprøve.getNorsk());
+		preparedStatement.setString(1, skoleprøve.getHistorie());
+		preparedStatement.setString(1, skoleprøve.getTysk());
 		System.out.println(preparedStatement);
 		}catch (SQLException e) {
 			printSQLException(e);
