@@ -1,6 +1,6 @@
-package com.skoleprÃ¸ver.servlets;
+package com.skoleprøver.servlets;
 
-public class skoleprÃ¸ve {
+public class skolepøve {
 	private String Fornavn;
 	private String Etternavn;
 	private String Matte;

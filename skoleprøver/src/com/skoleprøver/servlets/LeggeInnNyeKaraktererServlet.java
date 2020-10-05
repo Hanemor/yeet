@@ -1,4 +1,4 @@
-package com.skoleprÃ¸ver.servlets;
+package com.skoleprøver.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,10 +12,10 @@ import javax.servlet.ServletResponse;
 
 
 public class LeggeInnNyeKaraktererServlet extends GenericServlet {
-	private SkolePrÃ¸veDao skoleprÃ¸veDao;
+	private SkolePrøveDao skoleprøveDao;
 	
 	public void init() throws ServletException {
-		SkolePrÃ¸veDao skoleprÃ¸veDao = new SkolePrÃ¸veDao();
+		SkolePrøveDao skoleprøveDao = new SkolePrøveDao();
 		}
 
 
@@ -28,9 +28,9 @@ public class LeggeInnNyeKaraktererServlet extends GenericServlet {
 		String norsk_var = request.getParameter("norsk");
 		String historie_var = request.getParameter("historie");
 		String tysk_var = request.getParameter("tysk");
-		skoleprÃ¸ve nySkoleprÃ¸ve = new skoleprÃ¸ve(fornavn_var, etternavn_var, matte_var, norsk_var, historie_var, tysk_var);
+		skoleprøve nySkoleprøve = new skoleprøve(fornavn_var, etternavn_var, matte_var, norsk_var, historie_var, tysk_var);
 		try {
-			skoleprÃ¸veDao.nyPrÃ¸ve(nySkoleprÃ¸ve);
+			skoleprøveDao.nyPrøve(nySkoleprøve);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
