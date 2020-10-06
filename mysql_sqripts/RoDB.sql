@@ -36,7 +36,7 @@ etternavn varchar(30),
 fodt int(4),
 constraint utover_pk primary key(uID),
 constraint roklasse_fk foreign key(klasseID) references roKlasse (klasseID),
-constraint klubb_fk foreign key(klubbID) references klubb (KlubbID),
+constraint klubb_fk foreign key(klubbID) references klubb (klubbID),
 constraint kjonn_fk foreign key(kjonnID) references kjonn (kjonnID));
 
 CREATE TABLE testresultater (
